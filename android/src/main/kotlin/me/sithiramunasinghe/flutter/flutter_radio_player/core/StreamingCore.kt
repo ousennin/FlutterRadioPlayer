@@ -111,7 +111,7 @@ class StreamingCore : Service(), AudioManager.OnAudioFocusChangeListener {
         logger.info("LocalBroadCastManager Received...")
 
         // get details
-        val appName: String = intent!!.getStringExtra("appName")
+        val appName: String = intent!!.getStringExtra("appName").orEmpty()
         val subTitle: String = intent.getStringExtra("subTitle").orEmpty()
         val streamUrl: String = intent.getStringExtra("streamUrl").orEmpty()
         val playWhenReady: Boolean = intent.getStringExtra("playWhenReady") == "true"
