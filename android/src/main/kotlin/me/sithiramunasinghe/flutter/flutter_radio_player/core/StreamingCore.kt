@@ -111,10 +111,10 @@ class StreamingCore : Service(), AudioManager.OnAudioFocusChangeListener {
         logger.info("LocalBroadCastManager Received...")
 
         // get details
-        val appName = intent!!.getStringExtra("appName")
-        val subTitle = intent.getStringExtra("subTitle")
-        val streamUrl = intent.getStringExtra("streamUrl")
-        val playWhenReady = intent.getStringExtra("playWhenReady") == "true"
+        val appName: String = intent!!.getStringExtra("appName")
+        val subTitle: String = intent.getStringExtra("subTitle").orEmpty()
+        val streamUrl: String = intent.getStringExtra("streamUrl").orEmpty()
+        val playWhenReady: Boolean = intent.getStringExtra("playWhenReady") == "true"
 
         player = SimpleExoPlayer.Builder(context).build()
 
