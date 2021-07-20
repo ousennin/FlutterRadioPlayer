@@ -192,6 +192,7 @@ class StreamingCore : Service(), AudioManager.OnAudioFocusChangeListener {
                 object : PlayerNotificationManager.NotificationListener {
                     override fun onNotificationCancelled(notificationId: Int, dismissedByUser: Boolean) {
                         logger.info("Notification Cancelled. Stopping player...")
+                        print("shenme: notification cancelled")
                         stop()
                     }
 
@@ -251,11 +252,13 @@ class StreamingCore : Service(), AudioManager.OnAudioFocusChangeListener {
             }
 
             AudioManager.AUDIOFOCUS_LOSS -> {
+                print("shenme: losing focus")
                 stop()
             }
 
             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT -> {
                 if (isPlaying()) {
+                    print("shenme: loss transient")
                     stop()
                 }
             }
